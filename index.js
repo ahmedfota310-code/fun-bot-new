@@ -1,8 +1,13 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
-const qrcode = require('qrcode-terminal');
+
+const PHONE_NUMBER = '201119815696';
 
 const client = new Client({
     authStrategy: new LocalAuth(),
+    pairWithPhoneNumber: {
+        phoneNumber: PHONE_NUMBER,
+        showNotification: true
+    },
     puppeteer: {
         headless: true,
         args: [
@@ -15,8 +20,8 @@ const client = new Client({
     }
 });
 
-client.on('qr', (qr) => {
-    qrcode.generate(qr, { small: true });
+client.on('code', (code) => {
+    console.log('PAIRING CODE:', code);
 });
 
 client.on('ready', () => {
