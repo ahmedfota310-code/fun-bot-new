@@ -1,6 +1,6 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 
-const PHONE_NUMBER = '201119815696';
+const PHONE_NUMBER = '201119815662';
 
 const client = new Client({
     authStrategy: new LocalAuth(),
